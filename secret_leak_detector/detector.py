@@ -236,6 +236,8 @@ class EntropyAnalyzer:
 
     def calculate_entropy(self, text: str) -> float:
         """Calculate Shannon entropy of the given text."""
+        import math
+
         if not text:
             return 0.0
 
@@ -248,8 +250,7 @@ class EntropyAnalyzer:
         for count in freq.values():
             probability = count / length
             if probability > 0:
-                entropy -= probability * (probability and (probability > 0) and
-                                         __import__('math').log2(probability))
+                entropy -= probability * math.log2(probability)
 
         return entropy
 
